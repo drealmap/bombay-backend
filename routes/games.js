@@ -108,8 +108,8 @@ router.delete("/:game_id/config", async (req, res) => {
 // POST /games - create a new game
 router.post("/", async (req, res) => {
   try {
-    const { name, publisher, genres } = req.body;
-    const game = new Game({ name, publisher, genres });
+    const { name, publisher, category, releaseDate, description} = req.body;
+    const game = new Game({ name, publisher, category, releaseDate, description });
     await game.save();
     res.json(game);
   } catch (err) {
@@ -121,10 +121,10 @@ router.post("/", async (req, res) => {
 // PUT /games/:game_id - update a game by ID
 router.put("/:game_id", async (req, res) => {
   try {
-    const { name, publisher, genres } = req.body;
+    const { name, publisher, category, releaseDate, description } = req.body;
     const game = await Game.findByIdAndUpdate(
       req.params.game_id,
-      { name, publisher, genres },
+      { name, publisher, category, releaseDate, description },
       { new: true }
     );
     if (!game) {

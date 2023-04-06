@@ -10,21 +10,34 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  high_scores: [{
-    game_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Game'
-    },
-    score: {
-      type: Number,
-      required: true
-    },
-    date: {
-      type: Date,
-      required: true,
-      default: Date.now
-    }
-  }],
+  address: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    required: true,
+    default: Date.now
+  },
+  high_score: {
+    type: Number,
+    required: true,
+  },
+  // high_scores: [{
+  //   game_id: {
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: 'Game'
+  //   },
+  //   score: {
+  //     type: Number,
+  //     required: true
+  //   },
+  //   date: {
+  //     type: Date,
+  //     required: true,
+  //     default: Date.now
+  //   }
+  // }],
   settings: {
     sound_enabled: {
       type: Boolean,

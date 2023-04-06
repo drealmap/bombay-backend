@@ -1,15 +1,15 @@
 // game.js
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const gameSchema = new mongoose.Schema({
   name: { type: String, required: true },
   description: { type: String },
-  categories: { type: [String], required: true },
+  category: { type: String, required: true },
   publisher: { type: String },
-  releaseDate: { type: Date },
+  releaseDate: { type: Date, required: true, default: Date.now },
 });
 
-const Game = mongoose.model('Game', gameSchema);
+const Game = mongoose.model("Game", gameSchema);
 
 module.exports = Game;

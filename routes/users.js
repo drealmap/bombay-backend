@@ -46,8 +46,8 @@ router.get("/:user_id/data", async (req, res) => {
 // POST /users - create a new user
 router.post("/", async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    const user = new User({ name, email, password });
+    const { name, email, address, high_score, settings, date } = req.body;
+    const user = new User({ name, email, high_score, settings, address, date });
     await user.save();
     res.json(user);
   } catch (err) {
@@ -59,10 +59,10 @@ router.post("/", async (req, res) => {
 // PUT /users/:user_id - update a user by ID
 router.put("/:user_id", async (req, res) => {
   try {
-    const { name, email } = req.body;
+    const { name, email, high_score, settings, address, date } = req.body;
     const user = await User.findByIdAndUpdate(
       req.params.user_id,
-      { name, email },
+      { name, email, high_score, settings, address, date },
       { new: true }
     );
     if (!user) {
