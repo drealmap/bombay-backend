@@ -144,8 +144,6 @@ router.delete("/:game_id", async (req, res) => {
     if (!game) {
       return res.status(404).json({ message: "Game not found" });
     }
-    await GameConfiguration.findOneAndDelete({ game: req.params.game_id });
-    await UserData.deleteMany({ game: req.params.game_id });
     res.json({ message: "Game deleted successfully" });
   } catch (err) {
     console.error(err);
