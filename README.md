@@ -1,3 +1,3 @@
 # bombay-backend
 
-The guide for the API endpoints
+The doc for the API endpoints
